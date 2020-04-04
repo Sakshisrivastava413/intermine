@@ -73,8 +73,8 @@ if test ! -f $PROP_FILE; then
 fi
 
 echo "------> Checking databases..."
-pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start
-
+brew services start postgres 
+echo "-----> ?????"
 for db in $USERPROFILEDB $PRODDB; do
     if psql --list | egrep -q '\s'$db'\s'; then
         echo $db exists.
