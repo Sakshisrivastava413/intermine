@@ -73,6 +73,8 @@ if test ! -f $PROP_FILE; then
 fi
 
 echo "------> Checking databases..."
+    echo "# upgrade database version solved the trouble"
+    brew postgresql-upgrade-database
 
 for db in $USERPROFILEDB $PRODDB; do
     if psql --list | egrep -q '\s'$db'\s'; then
