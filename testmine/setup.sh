@@ -73,6 +73,11 @@ if test ! -f $PROP_FILE; then
 fi
 
 echo "------> Checking databases..."
+sudo su - postgres
+initdb --locale en_US.UTF-8 -D /var/lib/postgres/data
+exit
+sudo systemctl start postgresql
+sudo systemctl status postgresql
 for db in $USERPROFILEDB $PRODDB; do
     if psql --list | egrep -q '\s'$db'\s'; then
         echo $db exists.
