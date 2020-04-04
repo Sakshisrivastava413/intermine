@@ -74,15 +74,7 @@ fi
 
 echo "------> Checking databases..."
 echo "-----> ??minor???"
-brew services start postgres 
-for db in $USERPROFILEDB $PRODDB; do
-    if psql --list | egrep -q '\s'$db'\s'; then
-        echo $db exists.
-    else
-        echo Creating $db
-        createdb $db
-    fi
-done
+
 
 ##########
 ## Solr ##
