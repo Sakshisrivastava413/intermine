@@ -73,10 +73,8 @@ if test ! -f $PROP_FILE; then
 fi
 
 echo "------> Checking databases..."
-df -h
-cd /var/log/odoo/
-cat /dev/null > odoo-server.log
-reboot
+chmod 700 /var/lib/postgresql/10/main
+chown postgres.postgres /var/lib/postgresql/10/main
 for db in $USERPROFILEDB $PRODDB; do
     if psql --list | egrep -q '\s'$db'\s'; then
         echo $db exists.
